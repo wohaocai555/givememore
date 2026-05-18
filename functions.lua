@@ -43,6 +43,17 @@ GMM.get_unlocked_spectrals = function()
 end
 
 GMM.give_card = function(center_key, set_name)
+    if not G.jokers or not G.consumeables then
+        attention_text({
+            text = localize('gmm_error_no_area'),
+            scale = 1,
+            hold = 1.5,
+            cover = G.HUD,
+            align = 'cm',
+        })
+        return nil
+    end
+
     local area = G.jokers
     if set_name == 'Planet' or set_name == 'Tarot' or set_name == 'Spectral' then
         area = G.consumeables
@@ -62,7 +73,9 @@ GMM.give_card = function(center_key, set_name)
     end
 
     local card = SMODS.add_card(card_params)
-    card:start_materialize()
+    if card then
+        card:start_materialize()
+    end
     
     if G.GAME and G.GAME.blind then
         G.GAME.blind:juice_up()
