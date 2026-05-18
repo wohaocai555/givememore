@@ -48,8 +48,14 @@ GMM.UI.create_hud = function()
     })
 end
 
+GMM.ALLOWED_STATES = {
+    [G.STATES.SELECTING_HAND] = true,
+    [G.STATES.BLIND_SELECT] = true,
+    [G.STATES.SHOP] = true,
+}
+
 G.FUNCS.can_gmm_hud = function(e)
-    if G.STATE == G.STATES.SELECTING_HAND then
+    if GMM.ALLOWED_STATES[G.STATE] then
         e.UIBox.states.visible = true
     else
         e.UIBox.states.visible = false
