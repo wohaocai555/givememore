@@ -26,7 +26,7 @@ local function create_selection_ui(card_pool, set_name, title)
 end
 
 G.FUNCS.gmm_open_joker_selection = function(e)
-    if G.STATE ~= G.STATES.SELECTING_HAND then return end
+    if not GMM.ALLOWED_STATES[G.STATE] then return end
     local jokers = GMM.get_unlocked_jokers()
     if #jokers == 0 then return end
     
@@ -39,7 +39,7 @@ G.FUNCS.gmm_open_joker_selection = function(e)
 end
 
 G.FUNCS.gmm_open_planet_selection = function(e)
-    if G.STATE ~= G.STATES.SELECTING_HAND then return end
+    if not GMM.ALLOWED_STATES[G.STATE] then return end
     local planets = GMM.get_unlocked_planets()
     if #planets == 0 then return end
     
@@ -52,7 +52,7 @@ G.FUNCS.gmm_open_planet_selection = function(e)
 end
 
 G.FUNCS.gmm_open_tarot_selection = function(e)
-    if G.STATE ~= G.STATES.SELECTING_HAND then return end
+    if not GMM.ALLOWED_STATES[G.STATE] then return end
     local tarots = GMM.get_unlocked_tarots()
     if #tarots == 0 then return end
     
@@ -65,7 +65,7 @@ G.FUNCS.gmm_open_tarot_selection = function(e)
 end
 
 G.FUNCS.gmm_open_spectral_selection = function(e)
-    if G.STATE ~= G.STATES.SELECTING_HAND then return end
+    if not GMM.ALLOWED_STATES[G.STATE] then return end
     local spectrals = GMM.get_unlocked_spectrals()
     if #spectrals == 0 then return end
     
@@ -78,6 +78,6 @@ G.FUNCS.gmm_open_spectral_selection = function(e)
 end
 
 G.FUNCS.gmm_give_money = function(e)
-    if G.STATE ~= G.STATES.SELECTING_HAND then return end
+    if not GMM.ALLOWED_STATES[G.STATE] then return end
     GMM.give_money()
 end
