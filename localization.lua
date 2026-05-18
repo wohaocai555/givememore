@@ -12,6 +12,7 @@ GMM.LOCALIZATION = {
     gmm_config_title = "Give Me More Settings",
     gmm_negative = "Negative Edition on Jokers",
     gmm_money = "Money Amount",
+    gmm_error_no_area = "Cannot add card now!",
 }
 
 GMM.init_localization = function()
